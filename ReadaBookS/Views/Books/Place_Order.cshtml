@@ -1,0 +1,217 @@
+﻿@model ReadaBookS.Models.Book
+
+@{
+    ViewBag.Title = "Place_Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("AddOrder", "Orders", FormMethod.Post))
+{
+    <div class="container" style="margin: 100px auto;">
+        <h1>Rent</h1>
+        <div class="d-md-flex mt-3 border" style="padding: 30px; width: 65%;">
+            <div style="margin-right: 30px; height: 350px; width: 250px;">
+                <img src=@Url.Content("~/Content/images/Admin_Book/" + (Model.Book_Url)) style="width: 100%; height: 100%; box-shadow:3px 3px 3px 3px #808080" />
+            </div>
+            <hr />
+            <dl class="dl-horizontal">
+                <dl class="d-flex">
+                    <dt style="margin-right: 10px;">
+                        @Html.DisplayNameFor(model => model.Book_Name):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Book_Name)
+                    </dd>
+                </dl>
+                <dl class="d-flex">
+                    <dt style="margin-right: 10px;">
+                        @Html.DisplayNameFor(model => model.Book_Category):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Book_Category)
+                    </dd>
+                </dl>
+                <dl class="d-flex">
+                    <dt style="margin-right: 10px;">
+                        @Html.DisplayNameFor(model => model.Book_Author):
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Book_Author)
+                    </dd>
+                </dl>
+                <dd>
+                    <label><b>Choose Days</b></label><br />
+                    <input type="radio" id="p15" name="price" value="15" />
+                    <label>14 day (15 bath)</label><br />
+
+                    <input type="radio" id="p10" name="price" value="10" />
+                    <label>7 day (10 bath)</label><br />
+
+                    <input type="radio" id="p5" name="price" value="5" />
+                    <label>3 day (5 bath)</label><br />
+
+                    <input type="hidden" id="d" name="day" value="" />
+                    <br />
+                    <!-- Day -->
+                    <label><b>Please  enter your start date</b></label><br />
+                    <input type="date" id="sdate" name="sdate" />
+                    <input type="button" onclick="calDate()" class="btn btn-primary" value="End date"><br /><br />
+                    <label>Start date</label>
+                    <input type="text" id="outputS" disabled /><br /><br />
+                    <label>End date </label>
+                    <input type="text" id="front-edate" name="edate" disabled /><br />
+                    <input type="hidden" id="edate" name="edate" /><br />
+
+                    @*<div class="d-flex">
+            <div class="form-group" style="margin-right: 10px;">
+                <label class="form-label"><b>Start Date</b></label>
+                <input type="date" id="sdate" name="sdate" class="form-control" placeholder="Start date" required />
+            </div>
+            <div class="form-group">
+                <label class="form-label"><b>End Date</b></label>
+                <input type="date" id="edate" name="edate" class="form-control" placeholder="End date" required />
+            </div>
+        </div>*@
+
+
+                    <br />
+                    <div>
+                        @Html.HiddenFor(Model => Model.Book_id)
+                        @Html.HiddenFor(Model => Model.Book_Name)
+                        <input type="submit" value="Confirm" onclick="price_order()" class="btn btn-info pullright" />
+                    </div>
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+}
+<script src="~/Content/node_modules/moment/moment.js"></script>
+<script>
+    var x = document.querySelector('#d');
+    function price_order() {
+        if (document.getElementById('p15').checked) {
+            x.value = "14";
+        }
+        if (document.getElementById('p10').checked) {
+            x.value = "7";
+        }
+        if (document.getElementById('p5').checked) {
+            x.value = "3";
+        }
+    }
+
+    function calDate() {
+        if (document.getElementById('p15').checked) {
+            x.value = "14";
+        }
+        if (document.getElementById('p10').checked) {
+            x.value = "7";
+        }
+        if (document.getElementById('p5').checked) {
+            x.value = "3";
+        }
+
+
+        var final_date = parseInt(x.value);
+        alert("You rent " + final_date + " day");
+        var startdate = document.getElementById("sdate").value;
+        var new_date = moment(startdate, "YYYY-MM-DD").add('days', final_date);
+        var day = new_date.format('DD');
+        var month = new_date.format('MM');
+        var year = new_date.format('YYYY');
+        var enddate = year + '-' + month + '-' + day;
+
+        document.getElementById("outputS").value = startdate;
+        document.getElementById("edate").value = month + "/" + day + "/" + year + " 12:00:00 AM";
+        document.getElementById("front-edate").value = enddate;
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<h2>Place_Order</h2>
+
+    <div>
+        <h4>Book</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Book_Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Book_Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Book_Url)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Book_Url)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Book_CategoryID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Book_CategoryID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Book_Category)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Book_Category)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Book_Author)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Book_Author)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Book_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+*@

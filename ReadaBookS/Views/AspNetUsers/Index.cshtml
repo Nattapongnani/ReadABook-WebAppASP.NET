@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ReadaBookS.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <b>First Name</b>
+        </th>
+        <th>
+            <b>Last Name</b>
+        </th>
+        <th>
+            <b>Image</b>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lname)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Url)*@
+            <img style="width: 100px; height: 150px; margin: auto; border-radius: 50%;" src=@Url.Content("~/Content/images/profile/"+(item.Url)) />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new { @class = "btn btn-warning"}) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new { @class = "btn btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+</div>

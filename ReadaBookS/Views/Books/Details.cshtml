@@ -1,0 +1,42 @@
+﻿@model ReadaBookS.Models.Book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 100px">
+
+
+<h2>Details</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_Name): @Html.DisplayFor(model => model.Book_Name)
+        </dt>
+        <dt>
+            <b>Images</b>
+        </dt>
+
+        <dd>
+            <img src=@Url.Content("~/Content/images/Admin_Book/"+(Model.Book_Url)) style="width:100px; height:150px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_CategoryID): @Html.DisplayFor(model => model.Book_CategoryID)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_Category): @Html.DisplayFor(model => model.Book_Category)
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book_Author): @Html.DisplayFor(model => model.Book_Author)
+        </dt>
+
+    </dl>
+</div>
+
+
+</div>

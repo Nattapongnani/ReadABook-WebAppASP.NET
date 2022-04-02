@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ReadaBookS.Models.Book>
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-top: 100px;"></div>
+
+<section>
+<div class="container">
+    <h2>Admin</h2>
+    <p style="left">
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    </p>
+    @for (var i = 1; i <= @Model.ToList().Count(); i++)
+    {
+        var indexItem = i - 1;
+
+        if (i == 1 || i % 4 == 1)
+        {
+            @:<div class="row">
+            }
+
+
+            <div class="col-md-3">
+                <!-- Card Component -->
+                <div class="thumbnail border text-center">
+                    <img class="img-responsive center" style="width: 50%; height: 250px; margin: auto;" src=@Url.Content("~/Content/images/Admin_Book/"+(Model.ElementAt(indexItem).Book_Url)) />
+                    <div class="caption">
+                        <h5>@Model.ElementAt(indexItem).Book_Name</h5>
+                        <p>@Model.ElementAt(indexItem).Book_Category</p>
+                        <p>@Model.ElementAt(indexItem).Book_Author</p>
+                        @Html.ActionLink("Details", "Details", new { id = Model.ElementAt(indexItem).Book_id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ElementAt(indexItem).Book_id }, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.ElementAt(indexItem).Book_id }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>
+                <br />
+                <br />
+                <!-- End Card Component -->
+            </div>
+
+            if (i % 4 == 0)
+            {
+            @:</div>
+        }
+
+    }
+</div>
+</section>
+
+

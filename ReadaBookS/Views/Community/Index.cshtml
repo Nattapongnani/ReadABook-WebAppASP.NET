@@ -1,0 +1,97 @@
+﻿@model IEnumerable<ReadaBookS.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #goals{
+        color: blue;
+        border: none;
+        padding: 10px 40px 10px 40px;
+        font-size: 20px;
+        background-color: palegreen;
+    }
+</style>
+
+<!-- Showcase -->
+<section class="bg-dark text-light p-5 p-lg-0 p-md-0 pt-lg-5 text-center text-sm-start mt-5">
+    <div class="container" style="padding-bottom: 50px;">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <!-- align-items-center = make text center-->
+            <div>
+                <!-- my = margin-top/button -->
+                <h1>READ A<span class="text-warning"> BOOKS</span></h1>
+                <p class="lead my-4"> Your knowledge can change the world</p>
+            </div>
+            <img class="img-fluid w-50 d-none d-sm-block edit_img rounded-circle" alt="" src=@Url.Content("~/Content/images/bg_home.jpg") /> <!-- d = display: -->
+        </div>
+    </div>
+</section>
+
+<div class="container mt-5">
+    <h2>Community</h2>
+    <hr />
+
+    @foreach (var item in Model)
+    {
+        <section class="user4">
+            <div class="user4-area d-flex m-2 p-5">
+                <div style="margin-right: 50px;">
+
+                    <img src=@Url.Content("~/Content/images/profile/"+item.Url) style="width:160px; height: 160px; border-radius: 50%;" />
+                </div>
+                <div class="user4-text">
+                    <h3>@Html.DisplayFor(modelItem => item.Fname) @Html.DisplayFor(modelItem => item.Lname)</h3>
+                    <p><b>Inspiration:</b> @Html.DisplayFor(modelItem => item.Inspiration)</p>
+                    I will read
+                    <button id="goals"><b>@Html.DisplayFor(modelItem => item.goal)</b></button> 
+                    books in 2021
+                </div>
+            </div>
+        </section>
+    }
+
+
+
+
+    @*<table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.goal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Inspiration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Url)
+                </th>
+
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.goal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inspiration)
+                    </td>
+                    <td>
+                        <img src=@Url.Content("~/Content/images/profile/"+item.Url) style="width:100px; height: 150px;" />
+                    </td>
+                </tr>
+            }
+
+        </table>*@
+
+</div>

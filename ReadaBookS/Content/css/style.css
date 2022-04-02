@@ -1,0 +1,149 @@
+﻿body::before {
+    display: block;
+    content: '';
+    height: 60%;
+}
+
+@media(min-width: 768px) {
+    .news-input {
+        width: 50%;
+    }
+}
+
+.btn:hover {
+    background-image: linear-gradient(to right, #1c00d4, #9700ff);
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.navbar {
+    background-color: rgb(33, 37, 41);
+}
+
+.text-nav {
+    font-size: 18px;
+    color: #ffffff;
+}
+
+    .text-nav:hover {
+        color: rgb(38, 132, 255);
+    }
+
+.p-readabook {
+    font-size: 20px;
+}
+
+/*.col-md{
+    margin-top: 0;
+    transition: 0.4s;
+}
+.col-md:hover{
+    margin-top: -6px;
+}*/
+.bg1 {
+    background-image: url(../images/art2.jpg);
+    background-size: cover;
+}
+
+.bg2 {
+    background-image: url(../images/fiction_bg.jpg);
+    background-size: cover;
+}
+
+.bg3 {
+    background-image: url(../images/literature_bg.jpg);
+    background-size: cover;
+}
+
+.bg4 {
+    background-image: url(../images/financial_bg.jpg);
+    background-size: cover;
+}
+
+.bg5 {
+    background-image: url(../images/psychology_bg.jpg);
+    background-size: cover;
+}
+
+.bg6 {
+    background-image: url(../images/tralvel_bg.jpg);
+    background-size: cover;
+}
+
+/* CSS for social */
+.social ul {
+    list-style-type: none;
+}
+
+    .social ul li {
+        display: inline;
+        padding: 1%;
+    }
+
+/* Browse by category */
+.shadow_browse {
+    font-weight: bold;
+    text-shadow: 3px 3px 3px black;
+}
+
+.btn-shadow_browse {
+    box-shadow: 0px 0px 0px black;
+}
+
+    .btn-shadow_browse:hover {
+        box-shadow: 5px 5px 5px black;
+    }
+
+.bi {
+    width: 0px;
+}
+
+/* Profile.cshtml*/
+.goals {
+    height: 100px;
+    width: 100px;
+    margin-left: 90%;
+}
+
+
+
+.button1 button {
+    padding: 1px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.profile1 {
+    height: 200px;
+    width: 200px;
+    border: 10px solid #fff;
+    border-radius: 50%;
+}
+
+#img {
+    height: 100%;
+    width: 100%;
+}
+
+#photo {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+.button2 {
+    margin-top: 20px;
+}
+
+    .button2 #uploadBtn {
+        margin-right: 45px;
+    }
+
+#file {
+    display: none;
+}
+
+#uploadBtn {
+    color: #fff;
+    margin-left: 40px;
+    cursor: pointer;
+}

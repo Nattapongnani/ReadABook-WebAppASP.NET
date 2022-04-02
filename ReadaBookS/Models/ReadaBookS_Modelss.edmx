@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Fname" Type="nvarchar(max)" />
+          <Property Name="Lname" Type="nvarchar(max)" />
+          <Property Name="goal" Type="int" Nullable="false" />
+          <Property Name="Inspiration" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar(max)" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_id" />
+          </Key>
+          <Property Name="Book_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="50" />
+          <Property Name="Book_Url" Type="varchar" MaxLength="50" />
+          <Property Name="Book_CategoryID" Type="int" />
+          <Property Name="Book_Category" Type="varchar" MaxLength="50" />
+          <Property Name="Book_Author" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Book_id" Type="int" />
+          <Property Name="user_email" Type="varchar" MaxLength="50" />
+          <Property Name="o_BookName" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="varchar" MaxLength="50" />
+          <Property Name="day" Type="varchar" MaxLength="50" />
+          <Property Name="Start_date" Type="date" />
+          <Property Name="End_date" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Lname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="goal" Type="Int32" Nullable="false" />
+          <Property Name="Inspiration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_id" />
+          </Key>
+          <Property Name="Book_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Book_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Book_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Book_CategoryID" Type="Int32" />
+          <Property Name="Book_Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Book_Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Order_id" />
+          </Key>
+          <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Book_id" Type="Int32" />
+          <Property Name="user_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="o_BookName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="day" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Start_date" Type="DateTime" Precision="0" />
+          <Property Name="End_date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="Book_Order" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Book_Order">
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="goal" ColumnName="goal" />
+                <ScalarProperty Name="Inspiration" ColumnName="Inspiration" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="Model.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Book_Url" ColumnName="Book_Url" />
+                <ScalarProperty Name="Book_CategoryID" ColumnName="Book_CategoryID" />
+                <ScalarProperty Name="Book_Category" ColumnName="Book_Category" />
+                <ScalarProperty Name="Book_Author" ColumnName="Book_Author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+                <ScalarProperty Name="Book_id" ColumnName="Book_id" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="o_BookName" ColumnName="o_BookName" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="day" ColumnName="day" />
+                <ScalarProperty Name="Start_date" ColumnName="Start_date" />
+                <ScalarProperty Name="End_date" ColumnName="End_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

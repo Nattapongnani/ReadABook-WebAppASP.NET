@@ -1,0 +1,295 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using ReadaBookS.Models;
+@using Microsoft.AspNet.Identity
+
+@if (User.Identity.IsAuthenticated)
+{
+    if ("admin1@gmail.com" == User.Identity.GetUserName())
+    {
+        var manager = new UserManager<ApplicationUser>(new Microsoft.AspNet.Identity.EntityFramework.UserStore<ApplicationUser>(new ApplicationDbContext()));
+        var currentUser = manager.FindById(User.Identity.GetUserId());
+
+        <!-------------------------------------------------- HEADER Admin LoggedIn ---------------------------------------------------------->
+        <section class="bg-dark text-light p-5 p-lg-0 p-md-0 pt-lg-5 mt-md-5 text-center text-sm-start">
+            <div class="container" style="padding-bottom: 50px;">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <!-- align-items-center = make text center-->
+                    <div>
+                        <!-- my = margin-top/button -->
+                        <h1>READ A<span class="text-warning"> BOOKS</span></h1>
+                        <h2>Welcome Admin!!</h2>
+                        @*<div data-bs-toggle="modal" data-bs-target="#enroll">
+                                @Html.ActionLink("Sign Up Now", "register", "Account", null, new { @class = "btn btn-primary btn-lg" })
+                            </div>*@
+                    </div>
+                    <img class="img-fluid w-50 d-none d-sm-block edit_img rounded-circle" alt="" src=@Url.Content("~/Content/images/profile/"+currentUser.Url) /> <!-- d = display: -->
+                </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <!-------------------------------------------------- HEADER User LoggedIn ---------------------------------------------------------->
+        <section class="bg-dark text-light p-5 p-lg-0 p-md-0 pt-lg-5 mt-md-5 text-center text-sm-start">
+            <div class="container" style="padding-bottom: 50px;">
+                <div class="d-sm-flex align-items-center justify-content-between">
+                    <!-- align-items-center = make text center-->
+                    <div>
+                        <!-- my = margin-top/button -->
+                        <h1>READ A<span class="text-warning"> BOOKS</span></h1>
+                        <p class="lead my-4">Your Knowledge can change the world</p>
+                        @*<div data-bs-toggle="modal" data-bs-target="#enroll">
+                                @Html.ActionLink("Sign Up Now", "register", "Account", null, new { @class = "btn btn-primary btn-lg" })
+                            </div>*@
+                    </div>
+                    <img class="img-fluid w-50 d-none d-sm-block edit_img rounded-circle" alt="" src=@Url.Content("~/Content/images/bg_home.jpg") /> <!-- d = display: -->
+                </div>
+            </div>
+        </section>
+    }
+}
+else
+{
+    <!-------------------------------------------------- HEADER Not Login ---------------------------------------------------------->
+    <section class="bg-dark text-light p-5 p-lg-0 p-md-0 pt-lg-5 text-center text-sm-start">
+        <div class="container" style="padding-bottom: 50px;">
+            <div class="d-sm-flex align-items-center justify-content-between">
+                <!-- align-items-center = make text center-->
+                <div>
+                    <!-- my = margin-top/button -->
+                    <h1>READ A<span class="text-warning"> BOOKS</span></h1>
+                    <p class="lead my-4"> Your knowledge can change the world</p>
+                    <div data-bs-toggle="modal" data-bs-target="#enroll">
+                        @Html.ActionLink("Sign Up Now", "register", "Account", null, new { @class = "btn btn-primary btn-lg" })
+                    </div>
+                </div>
+                <img class="img-fluid w-50 d-none d-sm-block edit_img rounded-circle" alt="" src=@Url.Content("~/Content/images/bg_home.jpg") /> <!-- d = display: -->
+            </div>
+        </div>
+    </section>
+}
+
+<!-------------------------------------------------- READ A BOOK ---------------------------------------------------------->
+<section class="text-light p-5" style="background-image: linear-gradient(to right, #1c00d4, #9700ff); ">
+    <div class="container">
+        <div>
+            <h1 class="mb-3 mb-md-0 text-center">Read a Book</h1>
+            <p class="text-center p-readabook">เว็บไซต์สำหรับการ <span style="font-size: 50px;"><a href="#" style="color: white;">เช่า</a></span> หนังสือมีทุกเรื่องที่คุณสนใจ ฮิต ติดเทนรด์ ไม่ว่าจะหนังสือที่ศิลปินคุณอ่าน เราหามาให้หมด</p>
+        </div>
+    </div>
+</section>
+
+<!-------------------------------------------------- New Releases ---------------------------------------------------------->
+<div class="container mt-5" style="margin-bottom: 100px;">
+    <div class="text-center mt-5">
+        <h1>New Releases</h1>
+    </div>
+    <main class="page-content">
+        <div class="cards" style="background-size: 300px 450px;">
+            <div class="content">
+                <h2 class="title">1984</h2>
+                <div style="margin-top: 150px;">
+
+                </div>
+            </div>
+        </div>
+        <div class="cards" style="background-size: 250px 350px;">
+            <div class="content">
+                <h2 class="title">The Road to serfdom</h2>
+                <div style="margin-top: 150px;">
+
+                </div>
+            </div>
+        </div>
+        <div class="cards" style="background-size: 250px 380px;">
+            <div class="content">
+                <h2 class="title">Mastering Bitcoin</h2>
+                <div style="margin-top: 150px;">
+
+                </div>
+            </div>
+        </div>
+        <div class="cards" style="background-size: 240px 350px;">
+            <div class="content">
+                <h2 class="title">The birth of korean</h2>
+                <div style="margin-top: 150px;">
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+<!-------------------------------------------------- Browse by Category ---------------------------------------------------------->
+<div class="container text-center">
+    <h1>Browse by category</h1>
+</div>
+<section class="p-3 ">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md">
+                <div class="card bg1 text-light">
+                    <div class="card-body text-center">
+                        <div class="h1">
+                            <i class="bi bi-palette-fill shadow_browse"></i>
+                        </div>
+                        <h3 class="card-title shadow_browse">ART AND CULTURE</h3>
+                        <br>
+                        <br>
+                        <a href="#" class="btn btn-primary btn-shadow_browse">more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg2 text-light">
+                    <div class="card-body text-center">
+                        <div class="h1">
+                            <i class="bi bi-book-half shadow_browse"></i>
+                        </div>
+                        <h3 class="card-title shadow_browse">FICTION</h3>
+                        <br>
+                        <br>
+                        <a href="#" class="btn btn-primary btn-shadow_browse">more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg3 text-light">
+                    <div class="card-body text-center">
+                        <div class="h1">
+                            <i class="bi bi-pen-fill shadow_browse"></i>
+                        </div>
+                        <h3 class="card-title shadow_browse">LITERAUTE</h3>
+                        <br>
+                        <br>
+                        <a href="#" class="btn btn-primary btn-shadow_browse">more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="p-3">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md">
+                <div class="card bg4 text-light">
+                    <div class="card-body text-center">
+                        <div class="h1">
+                            <i class="bi bi-graph-up shadow_browse"></i>
+                        </div>
+                        <h3 class="card-title shadow_browse">FINANCE</h3>
+                        <br>
+                        <br>
+                        <a href="#" class="btn btn-primary btn-shadow_browse">more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg5 text-light">
+                    <div class="card-body text-center">
+                        <div class="h1">
+                            <i class="bi bi-patch-question-fill shadow_browse"></i>
+                        </div>
+                        <h3 class="card-title shadow_browse">PSYCHOLOGY</h3>
+                        <br>
+                        <br>
+                        <a href="#" class="btn btn-primary btn-shadow_browse">more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card bg6 text-light">
+                    <div class="card-body text-center">
+                        <div class="h1">
+                            <i class="bi bi-binoculars-fill shadow_browse"></i>
+                        </div>
+                        <h3 class="card-title shadow_browse">TRAVEL</h3>
+                        <br>
+                        <br>
+                        <a href="#" class="btn btn-primary btn-shadow_browse">more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-------------------------------------------------- About ---------------------------------------------------------->
+<section id="learn" class="p-5 text-light" style="margin-top: 100px; background-image: linear-gradient(to right, #1c00d4, #9700ff);">
+    <div class="container">
+        <div class="row align-items-center justify-content-between">
+            <div class="col-md p-5">
+                <h2>เกี่ยวกับ</h2>
+                <p class="lead">
+                    เว็บไซต์นี้เริ่มจากความชื่นชอบและรักในการอ่านหนังสือโดยส่วนตัวของผู้พัฒนามีจุดประสงค์ในการอ่านหนังสือเพื่อเพิ่มพูนความรู้และผ่อนคลายโดยหนังสือที่เว็บไซต์นี้มีให้บริการล้วนเป็นหนังสือยอดนิยม และได้แบ่งเป็น 5 หมวดหลัก ที่ผู้อ่านสนใจมากที่สุด
+                </p>
+            </div>
+            <div class="col-md">
+                <img class="img-fluid" alt="" src="~/Content/images/about.png" />
+            </div>
+            @*<a href="#learn" class="btn btn-primary mt-3">
+                <i class="bi bi-chevron-right"></i>Read More
+            </a>*@
+            <br />
+            @Html.ActionLink("> Read More", "About", "Home", null, new {@class = "btn btn-primary mt-4"})
+        </div>
+    </div>
+</section>
+
+<!-------------------------------------------------- Coming Soon  ---------------------------------------------------------->
+<section class="p-3" style="margin: 100px 0;">
+    <div class="mb-5 text-center">
+        <h1>Coming soon</h1>
+    </div>
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md">
+                <div class="card text-dark">
+                    <div class="card-body text-center">
+                        <a href="#"><img width="100%" height="300px" src=@Url.Content("~/Content/images/comingSoon/breakout_trading.jpg")></a>
+                        <h4 class="card-title pt-3">Virtual</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card text-dark">
+                    <div class="card-body text-center">
+                        <a href="#"><img width="100%" height="300px" src=@Url.Content("~/Content/images/comingSoon/Leading_Change.jpg")></a>
+                        <h4 class="card-title pt-3">Leading Change</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card text-dark">
+                    <div class="card-body text-center">
+                        <a href="#"><img width="100%" height="300px" src=@Url.Content("~/Content/images/comingSoon/SHOE_DOG.jpg")></a>
+                        <h4 class="card-title pt-3">Shoe dog</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card text-dark">
+                    <div class="card-body text-center">
+                        <a href="#"><img width="100%" height="300px" src=@Url.Content("~/Content/images/comingSoon/The_Art_of_People.jpg")></a>
+                        <h4 class="card-title pt-3">The Art of people</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card text-dark">
+                    <div class="card-body text-center">
+                        <a href="#"><img width="100%" height="300px" src=@Url.Content("~/Content/images/comingSoon/Top_10_Visionaries_that_Changed_the_World.jpg")></a>
+                        <h4 class="card-title pt-3">Top 10 Visionaries</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

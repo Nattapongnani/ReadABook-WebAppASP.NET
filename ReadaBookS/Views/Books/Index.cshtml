@@ -1,0 +1,90 @@
+﻿@model IEnumerable<ReadaBookS.Models.Book>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Showcase -->
+<section class="bg-dark text-light p-5 p-lg-0 p-md-0 pt-lg-5 text-center text-sm-start mt-5">
+    <div class="container" style="padding-bottom: 50px;">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <!-- align-items-center = make text center-->
+            <div>
+                <!-- my = margin-top/button -->
+                <h1>READ A<span class="text-warning"> BOOKS</span></h1>
+                <p class="lead my-4"> Your knowledge can change the world</p>
+            </div>
+            <img class="img-fluid w-50 d-none d-sm-block edit_img rounded-circle" alt="" src=@Url.Content("~/Content/images/bg_home.jpg") /> <!-- d = display: -->
+        </div>
+    </div>
+</section>
+
+<section class="text-light p-5 mb-2" style="background-image: linear-gradient(to right, #1c00d4, #9700ff); ">
+    <div class="container">
+        <div>
+            <h1 class="mb-3 mb-md-0 text-center">Book</h1>
+        </div>
+    </div>
+</section>
+
+<div class="container" style="margin-left: 60%; margin-top: 50px;">
+    @using ((Html.BeginForm()))
+    {
+
+        @*@Html.TextBox("searchString", null, new { @placehoder = "ค้นหา" })*@
+
+
+        <span style="margin-right: 10px; font-size: 20px;">Search by Category</span>
+
+            @Html.DropDownList("searchString", new List<SelectListItem>
+            { new SelectListItem { Text = "art", Value = "art", Selected=true},
+            new SelectListItem { Text = "Fiction", Value = "Fiction"},
+            new SelectListItem { Text = "Literaute", Value = "Literaute"},
+            new SelectListItem { Text = "Finance", Value = "Finance"},
+            new SelectListItem { Text = "Psychology", Value = "Psychology"},
+            new SelectListItem { Text = "Travel", Value = "Travel"},
+            }, "Select all Category")
+        <input type="submit" class="btn btn-info" value="Search" />
+    }
+</div>
+
+<section>
+<div class="container mt-5">
+    @for (var i = 1; i <= @Model.ToList().Count(); i++)
+    {
+        var indexItem = i - 1;
+
+        if (i == 1 || i % 4 == 1)
+        {
+            @:<div class="row">
+            }
+
+
+            <div class="col-md-3">
+                <!-- Card Component -->
+                <div class="thumbnail border-dark text-center hover_book">
+                    <img class="img-responsive center pt-2 mb-4"
+                         style="width: 50%; height: 250px; margin: auto; box-shadow: 2px 2px 2px 2px #bababa"
+                         src=@Url.Content("~/Content/images/Admin_Book/"+(Model.ElementAt(indexItem).Book_Url)) />
+                    <div class="caption mb-2">
+                        <h5>@Model.ElementAt(indexItem).Book_Name</h5>
+                        <p>@Model.ElementAt(indexItem).Book_Category</p>
+                        @*<p>@Model.ElementAt(indexItem).Book_Author</p>*@
+                        @Html.ActionLink("Order", "Place_Order", new { id = Model.ElementAt(indexItem).Book_id }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+                <br />
+                <br />
+                <!-- End Card Component -->
+            </div>
+
+            if (i % 4 == 0)
+            {
+            @:</div>
+        }
+
+    }
+</div>
+</section>

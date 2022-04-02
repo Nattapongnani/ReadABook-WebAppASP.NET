@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<style>
+    .grid {
+        display: flex;
+        margin: 0 2em;
+    }
+
+    .scale-title {
+        margin: 20px;
+    }
+
+    .scale {
+        margin: 6em 6em;
+    }
+</style>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<!-- Showcase -->
+<section class="bg-dark text-light p-5 p-lg-0 p-md-0 pt-lg-5 text-center text-sm-start" style="margin-top: -10px;">
+    <div class="container" style="padding-bottom: 50px;">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <!-- align-items-center = make text center-->
+            <div>
+                <!-- my = margin-top/button -->
+                <h1>READ A<span class="text-warning"> BOOKS</span></h1>
+                <p class="lead my-4"> Your knowledge can change the world</p>
+            </div>
+            <img class="img-fluid w-50 d-none d-sm-block edit_img rounded-circle" alt="" src=@Url.Content("~/Content/images/bg_home.jpg") /> <!-- d = display: -->
+        </div>
+    </div>
+
+    
+</section>
+
+<div class="container scale">
+    <div class="grid">
+        <div class="col">
+            <div class="scale-title">
+                <label style="font-size: 40px;">About</label>
+                <p> เว็บไซต์นี้เริ่มจากความชื่นชอบและรักในการอ่านหนังสือโดยส่วนตัวของผู้พัฒนามีจุดประสงค์ในการอ่านหนังสือเพื่อเพิ่มพูนความรู้ และผ่อนคลาย โดยหนังสือที่เว็บไซต์นีมีให้บริการล้วนเป็นหนังสือยอดนิยม และได้แบ่งเป็น5หมวดหลัก ที่ผู้อ่านสนใจมากที่สุด</p>
+                <label><b>คิดค่าเช่าหนังสืออย่างไร?</b></label>
+                <ul>
+                    <li>คำสั่งเช่า  7 วัน 15บาท</li>
+                    <li>คำสั่งเช่า  5 วัน 10บาท</li>
+                    <li>คำสั่งเช่า  3 วัน 5บาท</li>
+                </ul>
+                <br>
+                <label><b>เวลาเปิด-ปิดของร้าน</b></label>
+                <ul style="list-style:none;">
+                    <li>วันธรรมดา 10.00-20.00 น.</li>
+                    <li>วันเสาร์-อาทิตย์ 09.00-21.00 น.</li>
+                </ul>
+                <br>
+                <p>สอบถามข้อมูลเพิ่มเติมหากมีข้อสงสัย หรือต้องการสอบถามข้อมูลเพิ่มเติม กรุณาติดต่อมาที่ <b>ไลน์ readabook</b></p>
+            </div>
+        </div>
+        <div class="col2">
+            <img style="margin-left: 100px; height: 450px; box-shadow: 3px 3px 3px 3px #808080" src=@Url.Content("~/Content/images/about.png") />
+        </div>
+
+    </div>
+</div>
+
+
+
+
