@@ -4,7 +4,7 @@ This project from subject Web Application and Development, Information Technolog
 Tools: C#, MVC, LINQ, Boostrap, Role of Security 
 
 # Developer
-Dev by: Mr. Nattapong Yuvarisinant
+Dev by: Mr. Nattapong Yuwasirinun
 
 # Presentation
 video Presentation: https://bit.ly/3x8hMIN
